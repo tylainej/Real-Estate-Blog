@@ -16,7 +16,7 @@ AS A USER I WANT TO BE SEE LOCAL REAL ESTATE LOCALS IN MY AREA
 
 As a user I want to be able to direct readers to my personal links
 
-![new wireframe 1](https://user-images.githubusercontent.com/40297750/45043592-9ab65600-b03b-11e8-939a-7e807db20dd9.png)
+![blog erd](https://user-images.githubusercontent.com/40297750/45052137-f260bb80-b053-11e8-86ca-ff902a7a3173.png)
 
 
 # TIMELINE
