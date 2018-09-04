@@ -18,6 +18,8 @@ I want the user auth completed by Friday
 
 The bulk of CSS will be done over the weedend and completed by Monday
 
+![img_20180904_102411](https://user-images.githubusercontent.com/40297750/45037381-db5aa300-b02c-11e8-9942-c0dc63ca6b0d.jpg)
+
 
 
 
