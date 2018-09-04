@@ -42,5 +42,11 @@ create article
 ![create article 1](https://user-images.githubusercontent.com/40297750/45049132-ae69b880-b04b-11e8-9ce9-3a792672853f.png)
 
 
+Author Tylaine Jeffrey
 
+General Assembly
+
+Web Development Immersive
+
+Lambda Class | 2018
 
