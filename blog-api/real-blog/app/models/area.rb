@@ -1,3 +1,3 @@
 class Area < ApplicationRecord
-  has_many :article_id
+  has_many :article
 end

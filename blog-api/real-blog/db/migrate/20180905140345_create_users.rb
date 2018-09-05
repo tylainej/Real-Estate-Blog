@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password
       t.string :icon
       t.string :soc_media
-      t.references :article, foreign_key: true
 
       t.timestamps
     end
