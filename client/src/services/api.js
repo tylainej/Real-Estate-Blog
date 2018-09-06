@@ -8,14 +8,14 @@ export function fetchArticles(articles) {
         });
 }
 
-//  function fetchArticles(ArticleId) {
-//     return fetch(`${BASE_URL}/articles/${ArticleId}`)
-//     .then(resp => {
-//         return resp.json()
-//     })
-//     .catch(err => {
-//         throw (err);
-//     });
-// }
+export function fetchArticle(id) {
+    return fetch(`${BASE_URL}/articles/${id}`)
+    .then(resp => {
+        return resp.json()
+    })
+    .catch(err => {
+        throw Error(err);
+    });
+}
 
  

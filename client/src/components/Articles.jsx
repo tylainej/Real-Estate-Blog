@@ -9,6 +9,12 @@ function Articles(props){
                          <div 
                              className="single-article">
                                  { article.content }
+                                 <br/>
+                                 <button
+                                    className="read-more"
+                                     handleClick={props.handleClick}>
+                                     
+                                     Read More</button>
                              </div>
                         
                      </div>

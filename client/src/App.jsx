@@ -10,7 +10,6 @@ class App extends Component {
       articles: []
     //creates an array of objects
     }
-    // this.handleArticleClick = this.handleArticleClick.bind(this);
 
   }
 
@@ -19,15 +18,24 @@ class App extends Component {
     fetchArticles()
     .then(resp => {
       console.log(resp);
-      this.setState({ articles:  resp });
+      this.setState({ articles: resp });
     })
   }
 
+
   render() {
     return (
+      <div className="main-page">
+      <div className="App-header">
+      <h1>Real Estate Blog</h1>
+      </div>
       <div className="Articles">
 
-        <Articles articles={this.state.articles} />
+        <Articles 
+        // handleClick={this.handleClick}
+         articles={this.state.articles} 
+         />
+      </div>
       </div>
     );
   }
