@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className="Articles">
 
-        <Articles/>
+        <Articles articles={this.state.articles} />
       </div>
     );
   }
