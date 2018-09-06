@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :areas
+  # resources :areas
 
   # resources :users do 
   #   resources :articles
