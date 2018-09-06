@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { fetchArticles } from './services/api';
+import Articles from './components/Articles';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      articles: []
+    //creates an array of objects
+    }
+    // this.handleArticleClick = this.handleArticleClick.bind(this);
+
+  }
+
+  componentDidMount() {
+    //Fetch articles on component mount, so we can pass it down as a prop 
+    fetchArticles()
+    .then(resp => {
+      console.log(resp);
+      this.setState({ articles:  resp });
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="Articles">
+
+        <Articles/>
       </div>
     );
   }
