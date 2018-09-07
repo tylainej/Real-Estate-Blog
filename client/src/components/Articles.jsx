@@ -19,6 +19,7 @@ function Articles(props){
                                         props.switchView("article")
                                          }
                                          )}>
+                                     
                                      Read More</button>
                              </div>
                         

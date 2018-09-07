@@ -8,11 +8,22 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      articles: []
+      currentView: "articles",
+      articles: [],
+      article: []
     //creates an array of objects
     }
     this.handleArticleClick = this.handleArticleClick.bind(this);
     this.switchView = this.switchView.bind(this);
+  }
+
+  componentDidMount() {
+    //Fetch articles on component mount, so we can pass it down as a prop 
+    fetchArticles()
+    .then(resp => {
+      console.log(resp);
+      this.setState({ articles: resp });
+    })
   }
   handleArticleClick(id) {
     fetchArticle(id)
@@ -43,16 +54,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    //Fetch articles on component mount, so we can pass it down as a prop 
-    fetchArticles()
-    .then(resp => {
-      console.log(resp);
-      this.setState({ articles: resp });
-    })
-  }
-
-
   render() {
     return (
       <div className="main-page">
@@ -61,9 +62,7 @@ class App extends Component {
       </div>
       <div className="Articles">
 
-         
         {this.currentView()}
-        
       </div>
       </div>
     );

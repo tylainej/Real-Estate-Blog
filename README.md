@@ -1,6 +1,6 @@
 # Real-Estate-Blog
 
-This is a Real Estate blog site where visitors can come and read articles written about Realty in their area. They find articles based on the area they are in and authorized users can join the site to write articles that can generate leads for their region. Visitors should be able to visit agent page and find ways to contact the author.
+This is a Real Estate blog site where visitors can come and read articles about real estate about popular cities in the US. Visitors also have the ability to create articles about select cities and make comments on the articles on the site.
 
 # USER STORIES
 
@@ -10,11 +10,6 @@ AS A USER I WANT TO BE ABLE TO WRITE ARTICLES ABOUT REAL ESTATE
 
 AS A USER I WANT TO BE ABLE TO MAKE COMMENTS ON THE ARTICLES
 
-AS A USER I WANT TO SEARCH THROUGH SUBJECTS OF ARTICLES
-
-AS A USER I WANT TO BE SEE LOCAL REAL ESTATE LOCALS IN MY AREA
-
-As a user I want to be able to direct readers to my personal links
 
 ![blog erd](https://user-images.githubusercontent.com/40297750/45052137-f260bb80-b053-11e8-86ca-ff902a7a3173.png)
 
