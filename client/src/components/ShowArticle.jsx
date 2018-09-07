@@ -7,7 +7,9 @@ function ShowArticle(props) {
             <div className="Articles">
                 <div
                     className="single-article">
-                    {props.article.content}
+                     {/* { props.article.subject }
+                    { props.article.title } */}
+                    { props.article.content }
                 </div>
             </div>
         </div>

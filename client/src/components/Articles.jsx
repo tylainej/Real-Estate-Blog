@@ -8,6 +8,8 @@ function Articles(props){
                      <div key={ article.id } className="Articles">
                          <div 
                              className="single-article">
+                                { article.title }
+
                                  { article.content }
                                  <br/>
                                  <button

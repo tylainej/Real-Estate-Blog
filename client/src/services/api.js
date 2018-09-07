@@ -18,4 +18,20 @@ export function fetchArticle(id) {
     });
 }
 
+export function saveArticle(articleId) {
+    const opts = {
+        method: 'POST',
+        body: JSON.stringify(articleId),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+// saves the article and then calls on the fetch to save a new article
+    return fetch(`${BASE_URL}/articles`, opts)
+        .then(resp => {
+            return resp.json();
+        }).catch(err => {
+            throw (err);
+        });
+}
  

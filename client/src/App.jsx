@@ -43,7 +43,6 @@ class App extends Component {
       case 'article':
       return <ShowArticle
       article={this.state.article}
-
       />
       case 'articles':
       return <Articles 
