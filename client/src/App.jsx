@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchArticles } from './services/api';
+import { fetchArticles, fetchArticle } from './services/api';
 import Articles from './components/Articles';
+import ShowArticle from './components/ShowArticle';
 
 class App extends Component {
   constructor(props){
@@ -10,7 +11,36 @@ class App extends Component {
       articles: []
     //creates an array of objects
     }
+    this.handleArticleClick = this.handleArticleClick.bind(this);
+    this.switchView = this.switchView.bind(this);
+  }
+  handleArticleClick(id) {
+    fetchArticle(id)
+    .then(resp => {
+      this.setState({ article: resp });
+    });
+  }
+  switchView(view){
+    this.setState({
+      currentView: view
+    })
+  }
 
+  currentView(){
+    const { currentView } = this.state;
+    switch ( currentView ) {
+      case 'article':
+      return <ShowArticle
+      article={this.state.article}
+      />
+      case 'articles':
+      return <Articles 
+      // handleClick={this.handleClick}
+       articles={this.state.articles}
+       handleArticleClick={this.handleArticleClick}
+       switchView = {this.switchView}
+       />
+    }
   }
 
   componentDidMount() {
@@ -31,10 +61,9 @@ class App extends Component {
       </div>
       <div className="Articles">
 
-        <Articles 
-        // handleClick={this.handleClick}
-         articles={this.state.articles} 
-         />
+         
+        {this.currentView()}
+        
       </div>
       </div>
     );
