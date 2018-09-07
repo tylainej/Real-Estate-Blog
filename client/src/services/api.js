@@ -19,6 +19,7 @@ export function fetchArticle(id) {
 }
 
 export function saveArticle(articleId) {
+    console.log('this is article:', articleId);
     const opts = {
         method: 'POST',
         body: JSON.stringify(articleId),

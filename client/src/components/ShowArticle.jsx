@@ -7,10 +7,21 @@ function ShowArticle(props) {
             <div className="Articles">
                 <div
                     className="single-article">
-                     {/* { props.article.subject }
-                    { props.article.title } */}
+                     {/* { props.article.subject } */}
+                    { props.article.title }
                     { props.article.content }
                 </div>
+                <button
+                //     className="read-more"
+                //     onClick={(() => {
+                                         
+                //     props.handleArticleClick(article.id)
+                //     props.switchView("article")
+                //  }
+                //     )}
+                    >
+                                     
+                </button>
             </div>
         </div>
     )
