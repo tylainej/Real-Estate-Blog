@@ -21,19 +21,10 @@ class ArticlesController < ApplicationController
     @article = Article.create!(article_params)
 
     render json: Article.all
-
-    # respond_to do |format|
-    #   if @article.save
-    #     format.html { redirect_to @article, notice: 'Article was successfully created.' }
-    #     format.json { render :show, status: :created, location: @article }
-    #   else
-    #     format.json { render json: @article.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
+  # PUT /articles/1
+  # PUT /articles/1.json
   def update
     if @article.update(article_params)
       render json: @article
@@ -52,13 +43,13 @@ class ArticlesController < ApplicationController
   end
 
  
-  def destroy
-    @article.destroy
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @article.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     def article_params
