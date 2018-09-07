@@ -8,11 +8,18 @@ function Articles(props){
                      <div key={ article.id } className="Articles">
                          <div 
                              className="single-article">
+                                { article.title }
+
                                  { article.content }
                                  <br/>
                                  <button
                                     className="read-more"
-                                     handleClick={props.handleClick}>
+                                     onClick={(() => {
+                                         
+                                        props.handleArticleClick(article.id)
+                                        props.switchView("article")
+                                         }
+                                         )}>
                                      
                                      Read More</button>
                              </div>
@@ -25,3 +32,7 @@ function Articles(props){
 }
 
 export default Articles;
+
+
+//function read but not called when without clappers
+//with clappers the function is called immediately on load
