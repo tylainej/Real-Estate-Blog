@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchArticles, fetchArticle, saveArticle } from './services/api';
+import { fetchArticles, fetchArticle, saveArticle, updateArticle } from './services/api';
 import Articles from './components/Articles';
 import ShowArticle from './components/ShowArticle';
 import CreateArticle from './components/CreateArticle';
-
+import EditArticle from './components/EditArticle';
 
 class App extends Component {
   constructor(props) {
@@ -16,12 +16,16 @@ class App extends Component {
       // subject: [],
       content: '',
       title: '',
+      editedArticle: ''
 
       //creates an array of objects
     }
+    this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
     this.handleArticleClick = this.handleArticleClick.bind(this);
+    this.handEditArticleClick = this.handleEditArticle.bind(this)
+    this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
     this.switchView = this.switchView.bind(this);
   }
 
@@ -32,7 +36,7 @@ class App extends Component {
         this.setState({ articles: resp });
       })
   }
-  // works on the read more button to change state from all to one
+  // click read more button to change state from all articles to one article
   handleArticleClick(id) {
     fetchArticle(id)
       .then(resp => {
@@ -55,10 +59,18 @@ class App extends Component {
       case 'articles':
         return <Articles
           // handleClick={this.handleClick}
-          articles={this.state.articles}
-          handleArticleClick={this.handleArticleClick}
-          switchView={this.switchView}
+          articles = { this.state.articles }
+          handleArticleClick = { this.handleArticleClick }
+          switchView = { this.switchView }
         />
+      case 'edit article':
+      return <EditArticle
+          title = { this.state.title }
+          content = { this.state.content }
+
+          />
+        default:
+        return null;
     }
   }
   // addToArticles(id, title, content) {
@@ -71,7 +83,7 @@ class App extends Component {
   //     });
   // }
 
-
+// this function allows state to change to what's being put in 
   handleChange(event) {
     const { name, value } = event.target;
 
@@ -80,6 +92,7 @@ class App extends Component {
     });
   }
 
+  // this function work to create and article
   handleArticleSubmit(e) {
     e.preventDefault();
     const {
@@ -90,7 +103,6 @@ class App extends Component {
       title,
       content
     }
-  
     // console.log('this is article:', article);
     saveArticle(newArticle)
         .then(resp =>
@@ -100,7 +112,6 @@ class App extends Component {
             currentView: "articles",
             articles: resp
           })
-      console.log(resp)
         })
 
         .catch(err => {
@@ -111,11 +122,46 @@ class App extends Component {
 
 
 
+  handleEditArticle(article) {
+    this.setState({ 
+      editedArticle: article,
+      name: article.name,
+      title: article.title,
+      content: article.content,
+      currentView: "edit article"
+     });
+  }
+
+handleUpdateArticle(e){
+  e.preventDefault();
+ const {
+   title,
+   content
+ } =this.state;
+ const article = {
+   title,
+   content
+ }
+updateArticle( article )
+.then(resp =>
+  saveArticle())
+  .then(resp => {
+    this.setState({
+      currentView: "article",
+      article: resp
+    })
+    console.log(resp)
+  })
+}
+
+
+
   render() {
     return (
       <div className="main-page">
         <div className="App-header">
-          <h1>Real Estate Blog</h1>
+          <h1>
+            Real Estate Blog</h1>
         </div>
         <div className="create-nav">
           <CreateArticle
@@ -126,7 +172,7 @@ class App extends Component {
             handleChange={this.handleChange}
           />
         </div>
-        <div className="Articles">
+        <div className="articles-wrapper">
 
           {this.currentView()}
         </div>

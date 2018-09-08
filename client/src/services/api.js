@@ -18,11 +18,11 @@ export function fetchArticle(id) {
     });
 }
 
-export function saveArticle(articleId) {
-    console.log('this is article:', articleId);
+export function saveArticle(article) {
+    console.log('this is article:', article);
     const opts = {
         method: 'POST',
-        body: JSON.stringify(articleId),
+        body: JSON.stringify(article),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -36,3 +36,20 @@ export function saveArticle(articleId) {
         });
 }
  
+
+export function updateArticle(id, article) {
+    const opts = {
+        method: 'PUT',
+        body: JSON.stringify({ article }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    return fetch(`${BASE_URL}/articles/${id}`, opts)
+    .then(resp => {
+        return resp.json();
+    }).catch(err => {
+        throw (err);
+    });
+}

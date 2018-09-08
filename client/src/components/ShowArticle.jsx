@@ -1,30 +1,27 @@
 import React from 'react';
 
 function ShowArticle(props) {
-    // console.log(article)
-    return (
+  
+        return (
         <div>
-            <div className="Articles">
+            <div className="show-article">
                 <div
                     className="single-article">
-                     {/* { props.article.subject } */}
-                    { props.article.title }
-                    { props.article.content }
+                    <h1> { props.article.subject }</h1>
+                  <h2>  { props.article.title } </h2>
+                 <div><p>  { props.article.content } </p></div>
                 </div>
-                <button
-                //     className="read-more"
-                //     onClick={(() => {
-                                         
-                //     props.handleArticleClick(article.id)
-                //     props.switchView("article")
-                //  }
-                //     )}
-                    >
-                                     
+                <button className="edit-article-button"
+                onClick={() =>
+                props.handleEditArticleClick
+                 }>  
+                Edit Article                 
                 </button>
+                
             </div>
         </div>
-    )
+        );
 };
 
 export default ShowArticle;
+

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UpdateArticle(props) {
+function EditArticle(props) {
     return (
         <div>
             <h1>Edit Article:</h1>
@@ -27,4 +27,4 @@ function UpdateArticle(props) {
 
 }
 
-export default UpdateArticle;
+export default EditArticle;
