@@ -40,7 +40,7 @@ class App extends Component {
       .then(resp => {
         this.setState({ article: resp });
       });
-  }
+  } 
 
   // handleEditClick( article){
   //   fetchArticle(article.id)
@@ -113,6 +113,7 @@ updateArticle( article )
         default:
         return null;
     }
+
   }
   // addToArticles(id, title, content) {
   //   fetchArticles(id)
@@ -158,9 +159,6 @@ updateArticle( article )
         });
   }
 
-
-
- 
 
 
   render() {

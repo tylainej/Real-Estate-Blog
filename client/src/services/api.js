@@ -52,3 +52,17 @@ export function updateArticle(id, article) {
         throw (err);
     });
 }
+
+// export function deleteArticle(id) {
+//     const opts = {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     }
+
+//     return fetch(`${BASE_URL}/articles/${id}/`, opts)
+//     .catch(error => {
+//         throw Error(error);
+//     });
+// }
