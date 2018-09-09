@@ -18,12 +18,13 @@ class App extends Component {
       editedArticle: ''
     }   
     // this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
-    // this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
     this.handleArticleClick = this.handleArticleClick.bind(this);
     this.switchView = this.switchView.bind(this);
+    // console.log(article)
   }
 
   componentDidMount() {
@@ -31,23 +32,24 @@ class App extends Component {
     fetchArticles()
       .then(resp => {
         this.setState({ articles: resp });
-      })
+      });
   }
 
   // click read more button to change state from all articles to one article
-  handleArticleClick(id) {
-    fetchArticle(id)
+  handleArticleClick(article) {
+    fetchArticle(article)
       .then(resp => {
-        this.setState({ article: resp });
+        this.setState({ article: resp.article_id });
       });
   } 
 
-  // handleEditClick( article){
-  //   fetchArticle(article.id)
-  //   .then(resp =>{
-  //     this.setState({ articles: resp});
-  //   })
-  // }
+
+  handleEditClick( article){
+    fetchArticle(article)
+    .then(resp =>{
+      this.setState({ article: article });
+    })
+  }
 
 handleEditArticle(article) {
     this.setState({ 
@@ -92,8 +94,9 @@ updateArticle( article )
     switch (currentView) {
       case 'article':
         return <ShowArticle
-          article={this.state.article}
+          article = { this.state.article }
           handleChange={this.handleChange}
+          handleEditClick = { this.handleEditClick }
         />
       case 'articles':
         return <Articles

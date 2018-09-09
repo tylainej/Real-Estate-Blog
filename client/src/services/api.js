@@ -37,7 +37,7 @@ export function saveArticle(article) {
 }
  
 
-export function updateArticle(id, article) {
+export function updateArticle( id, article) {
     const opts = {
         method: 'PUT',
         body: JSON.stringify({ article }),
