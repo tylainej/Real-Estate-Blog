@@ -45,7 +45,6 @@ export function updateArticle(id, article) {
             'Content-Type': 'application/json'
         }
     }
-
     return fetch(`${BASE_URL}/articles/${id}`, opts)
     .then(resp => {
         return resp.json();

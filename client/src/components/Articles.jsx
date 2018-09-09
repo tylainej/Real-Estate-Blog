@@ -14,7 +14,7 @@ return (
                         <button
                             className="read-more"
                              onClick={(() => {
-                             props.handleArticleClick(article.id)
+                            props.handleArticleClick(article.id)
                             props.switchView("article")
                              }
                              )}>

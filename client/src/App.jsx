@@ -13,19 +13,16 @@ class App extends Component {
       currentView: "articles",
       articles: [],
       article: [],
-      // subject: [],
       content: '',
       title: '',
       editedArticle: ''
-
-      //creates an array of objects
-    }
+    }   
+    // this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
+    // this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
     this.handleArticleClick = this.handleArticleClick.bind(this);
-    this.handEditArticleClick = this.handleEditArticle.bind(this)
-    this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
     this.switchView = this.switchView.bind(this);
   }
 
@@ -36,6 +33,7 @@ class App extends Component {
         this.setState({ articles: resp });
       })
   }
+
   // click read more button to change state from all articles to one article
   handleArticleClick(id) {
     fetchArticle(id)
@@ -43,6 +41,46 @@ class App extends Component {
         this.setState({ article: resp });
       });
   }
+
+  // handleEditClick( article){
+  //   fetchArticle(article.id)
+  //   .then(resp =>{
+  //     this.setState({ articles: resp});
+  //   })
+  // }
+
+handleEditArticle(article) {
+    this.setState({ 
+      editedArticle: article,
+      name: article.name,
+      title: article.title,
+      content: article.content,
+      currentView: "edit article"
+     });
+  }
+
+handleUpdateArticle(e){
+  e.preventDefault();
+ const {
+   title,
+   content
+ } =this.state;
+ const article = {
+   title,
+   content
+ }
+updateArticle( article )
+.then(resp =>
+  saveArticle())
+  .then(resp => {
+    this.setState({
+      currentView: "article",
+      article: resp
+    })
+  })
+}
+
+
   switchView(view) {
     this.setState({
       currentView: view
@@ -55,6 +93,7 @@ class App extends Component {
       case 'article':
         return <ShowArticle
           article={this.state.article}
+          handleChange={this.handleChange}
         />
       case 'articles':
         return <Articles
@@ -67,7 +106,9 @@ class App extends Component {
       return <EditArticle
           title = { this.state.title }
           content = { this.state.content }
-
+          handleChange={this.handleChange}
+          editedArticle = { this.state.editedArticle }
+          handleArticleSubmit = { this.state.handleArticleSubmit }
           />
         default:
         return null;
@@ -103,7 +144,6 @@ class App extends Component {
       title,
       content
     }
-    // console.log('this is article:', article);
     saveArticle(newArticle)
         .then(resp =>
           fetchArticles())
@@ -113,47 +153,14 @@ class App extends Component {
             articles: resp
           })
         })
-
         .catch(err => {
           throw (err);
         });
-    
   }
 
 
 
-  handleEditArticle(article) {
-    this.setState({ 
-      editedArticle: article,
-      name: article.name,
-      title: article.title,
-      content: article.content,
-      currentView: "edit article"
-     });
-  }
-
-handleUpdateArticle(e){
-  e.preventDefault();
- const {
-   title,
-   content
- } =this.state;
- const article = {
-   title,
-   content
- }
-updateArticle( article )
-.then(resp =>
-  saveArticle())
-  .then(resp => {
-    this.setState({
-      currentView: "article",
-      article: resp
-    })
-    console.log(resp)
-  })
-}
-
+ 
 
 
   render() {
