@@ -33,8 +33,6 @@ landing page
 article page
 ![article age](https://user-images.githubusercontent.com/40297750/45048418-de17c100-b049-11e8-9cc9-0c001d7b68ac.png)
 
-create article
-![create article 1](https://user-images.githubusercontent.com/40297750/45049132-ae69b880-b04b-11e8-9ce9-3a792672853f.png)
 
 
 Author Tylaine Jeffrey
