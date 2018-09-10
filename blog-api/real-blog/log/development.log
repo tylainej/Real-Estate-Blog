@@ -5644,3 +5644,10 @@ Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms)
 ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=undefined):
   
 app/controllers/articles_controller.rb:13:in `show'
+Started GET "/articles" for 127.0.0.1 at 2018-09-10 10:08:28 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (10.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 17ms (Views: 6.4ms | ActiveRecord: 10.0ms)
+
+
