@@ -7,15 +7,15 @@ export function fetchArticles(articles) {
             throw (err);
         });
 }
- 
+
 export function fetchArticle(id) {
     return fetch(`${BASE_URL}/articles/${id}`)
-    .then(resp => {
-        return resp.json()
-    })
-    .catch(err => {
-        throw (err);
-    });
+        .then(resp => {
+            return resp.json()
+        })
+        .catch(err => {
+            throw (err);
+        });
 }
 
 export function saveArticle(article) {
@@ -27,7 +27,7 @@ export function saveArticle(article) {
             'Content-Type': 'application/json'
         }
     };
-// saves the article and then calls on the fetch to save a new article
+    // saves the article and then calls on the fetch to save a new article
     return fetch(`${BASE_URL}/articles`, opts)
         .then(resp => {
             return resp.json();
@@ -35,22 +35,22 @@ export function saveArticle(article) {
             throw (err);
         });
 }
- 
 
-export function updateArticle( id, article) {
+
+export function updateArticle( article, id) {
     const opts = {
         method: 'PUT',
-        body: JSON.stringify({ article }),
+        body: JSON.stringify( {article} ),
         headers: {
             'Content-Type': 'application/json'
         }
     }
-    return fetch(`${BASE_URL}/articles/${id}`, opts)
-    .then(resp => {
-        return resp.json();
-    }).catch(err => {
-        throw (err);
-    });
+    return fetch(`${BASE_URL}/articles/${article.id}`, opts)
+        .then(resp => {
+            return resp.json();
+        }).catch(err => {
+            throw (err);
+        });
 }
 
 // export function deleteArticle(id) {

@@ -1,34 +1,34 @@
 import React from 'react';
 
-function CreateArticle(props){
-    return(
+function CreateArticle(props) {
+    return (
         <div className="create-article-wrapper">
-         <button className="create-article" >  
-        <h1>Write Your Own Article</h1>
-        </button> 
-        <div>
-        <form onSubmit={props.handleArticleSubmit} >
-                {/* <input
+            <button className="create-article" >
+                <h1>Write Your Own Article</h1>
+            </button>
+            <div>
+                <form onSubmit={props.handleArticleSubmit} >
+                    {/* <input
                     type="text"
                     subject="subject"
                     value={props.subject}
                     placeholder="What's the Subject"
                     onChange={props.handleChange} /> */}
-                <input
-                className="title"
-                    type="text"
-                    name="title"
-                    value={props.title}
-                    placeholder="Title"
-                    onChange={props.handleChange} />
-                <input
-                className="article-content"
-                    type="text"
-                    name="content"
-                    value={props.content}
-                    placeholder="Your Article Goes Here"
-                    onChange={props.handleChange} />
-                {/* <select
+                    <input
+                        className="title"
+                        type="text"
+                        name="title"
+                        value={props.title}
+                        placeholder="Title"
+                        onChange={props.handleChange} />
+                    <input
+                        className="article-content"
+                        type="text"
+                        name="content"
+                        value={props.content}
+                        placeholder="Your Article Goes Here"
+                        onChange={props.handleChange} />
+                    {/* <select
                     value={props.subject}
                     name="subject"
                     onChange={props.handleChange} >
@@ -42,12 +42,12 @@ function CreateArticle(props){
                         )
                     })}
                 </select> */}
-                <input
-                className="submit-article"
-                    type="submit"
-                    value="Submit Article"
-                />
-            </ form>
+                    <input
+                        className="submit-article"
+                        type="submit"
+                        value="Submit Article"
+                    />
+                </ form>
             </div>
         </div>
     )

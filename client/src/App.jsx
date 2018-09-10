@@ -16,9 +16,8 @@ class App extends Component {
       title: '',
       content: '',
       editedArticle: ''
-    }   
-    // this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
-    // this.handleEditClick = this.handleEditClick.bind(this);
+    }
+    this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
     this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
@@ -38,81 +37,52 @@ class App extends Component {
   handleArticleClick(article) {
     fetchArticle(article)
       .then(resp => {
-        this.setState({ [article.content]: resp });
+        this.setState({ article: [resp] });
       });
-  } 
+  }
 
 
-handleEditArticle(article) {
-    this.setState({ 
+  handleEditArticle(article) {
+    this.setState({
       editedArticle: article,
       name: article.name,
       title: article.title,
       content: article.content,
       currentView: "edit article"
-     });
+
+    });
   }
 
-handleUpdateArticle(e){
-  e.preventDefault();
- const {
-   title,
-   content
- } =this.state;
- const article = {
-   title,
-   content
- }
-updateArticle( article )
-.then(resp =>
-  saveArticle())
-  .then(resp => {
-    this.setState({
-      currentView: "article",
-      article: resp
-    })
-  })
-}
-
-
-  switchView(view) {
-    this.setState({
-      currentView: view
-    })
-  }
-  // changes state from read all articles to show one article
-  currentView() {
-    const { currentView } = this.state;
-    switch (currentView) {
-      case 'article':
-        return <ShowArticle
-          article = { this.state.article }
-          handleChange={this.handleChange}
-          handleEditClick = { this.handleEditClick }
-        />
-      case 'articles':
-        return <Articles
-          // handleClick={this.handleClick}
-          articles = { this.state.articles }
-          handleArticleClick = { this.handleArticleClick }
-          switchView = { this.switchView }
-        />
-      case 'edit article':
-      return <EditArticle
-          title = { this.state.title }
-          content = { this.state.content }
-          handleChange={this.handleChange}
-          editedArticle = { this.state.editedArticle }
-          handleArticleSubmit = { this.state.handleArticleSubmit }
-          />
-        default:
-        return null;
+  handleUpdateArticle(e) {
+    e.preventDefault();
+    const {
+      title,
+      content
+    } = this.state;
+    const article = {
+      title,
+      content
     }
-
+    debugger;
+    console.log('hello')
+    updateArticle(article)
+      .then(resp =>
+        fetchArticle(article.id))
+      .then(resp => {
+        this.setState({
+          currentView: "article",
+          article: [resp]
+        })
+        debugger;
+        console.log('something')
+      })
   }
- 
 
-// this function allows state to change to what's being put in 
+
+
+
+
+  // this function allows state to change to what's being put in 
   handleChange(event) {
     const { name, value } = event.target;
 
@@ -133,20 +103,55 @@ updateArticle( article )
       content
     }
     saveArticle(newArticle)
-        .then(resp =>
-          fetchArticles())
-        .then(resp => {
-          this.setState({
-            currentView: "articles",
-            articles: resp
-          })
+      .then(resp =>
+        fetchArticles())
+      .then(resp => {
+        this.setState({
+          currentView: "articles",
+          articles: resp
         })
-        .catch(err => {
-          throw (err);
-        });
+      })
+      .catch(err => {
+        throw (err);
+      });
   }
 
+  switchView(view) {
+    this.setState({
+      currentView: view
+    })
+  }
+  // changes state from read all articles to show one article
+  currentView() {
+    const { currentView } = this.state;
+    switch (currentView) {
+      case 'article':
+        return <ShowArticle
+          article={this.state.article}
+          handleChange={this.handleChange}
+          handleEditArticle={this.handleEditArticle}
+        />
+      case 'articles':
+        return <Articles
+          // handleClick={this.handleClick}
+          articles={this.state.articles}
+          handleArticleClick={this.handleArticleClick}
+          switchView={this.switchView}
+        />
+      case 'edit article':
+        return <EditArticle
+          title={this.state.title}
+          content={this.state.content}
+          handleChange={this.handleChange}
+          editedArticle={this.state.editedArticle}
+          handleArticleSubmit={this.handleArticleSubmit}
+          handleUpdateArticle={this.handleUpdateArticle}
+        />
+      default:
+        return null;
+    }
 
+  }
 
   render() {
     return (

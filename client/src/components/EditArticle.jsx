@@ -1,61 +1,33 @@
-import React, { Component} from 'react';
+import React from 'react';
 
-class EditArticle extends Component {
-    constructor(props){
-    super(props);
+function EditArticle(props) {
 
-    const { article } = props;
-    this.state = {
-        title: article.title,
-        content: article.content,
-        article: []
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-}
 
-handleChange(event) {
-    const { name, value } = event.target;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-handleArticleSubmit(ev){
-    ev.preventDefault();
-    const data = {
-        title: this.state.title,
-        content: this.state.content
-    }
-    this.props.onSubmit(data);
-}
-
-render(){
     return (
         <div>
             <h1>Edit Article:</h1>
-            <form onSubmit={this.state.handleUpdateArticle} >
-                <input
+            <form onSubmit={props.handleUpdateArticle} className="edit-article">
+                <p>   <input
                     type="text"
                     name="name"
-                    value={this.state.title}
+                    value={props.title}
                     placeholder="Article Title"
-                    onChange={this.state.handleChange} />
-                <input
+                    onChange={props.handleChange} /></p>
+                <p>  <textarea
                     type="text"
                     name="content"
-                    value={this.state.content}
+                    value={props.content}
                     placeholder="Content"
-                    onChange={this.state.handleChange} />
+                    onChange={props.handleChange} /></p>
                 <input
+                    className="edit-submit-button"
                     type="submit"
                     value="submit Article"
                 />
             </ form>
         </div>
     );
-}
+
 }
 
 export default EditArticle;
