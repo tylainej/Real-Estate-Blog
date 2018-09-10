@@ -13,18 +13,17 @@ class App extends Component {
       currentView: "articles",
       articles: [],
       article: [],
-      content: '',
       title: '',
+      content: '',
       editedArticle: ''
     }   
     // this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
-    this.handleEditClick = this.handleEditClick.bind(this);
+    // this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
     this.handleArticleClick = this.handleArticleClick.bind(this);
     this.switchView = this.switchView.bind(this);
-    // console.log(article)
   }
 
   componentDidMount() {
@@ -39,17 +38,10 @@ class App extends Component {
   handleArticleClick(article) {
     fetchArticle(article)
       .then(resp => {
-        this.setState({ article: resp });
+        this.setState({ [article.content]: resp });
       });
   } 
 
-
-  handleEditClick( article){
-    fetchArticle(article)
-    .then(resp =>{
-      this.setState({ article: article });
-    })
-  }
 
 handleEditArticle(article) {
     this.setState({ 
@@ -118,15 +110,7 @@ updateArticle( article )
     }
 
   }
-  // addToArticles(id, title, content) {
-  //   fetchArticles(id)
-  //     .then(resp => {
-  //       this.setState({
-  //         [title]: resp.articles,
-  //         [content]: resp.articles
-  //       });
-  //     });
-  // }
+ 
 
 // this function allows state to change to what's being put in 
   handleChange(event) {

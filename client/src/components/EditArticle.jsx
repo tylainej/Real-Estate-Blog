@@ -1,22 +1,53 @@
-import React from 'react';
+import React, { Component} from 'react';
 
-function EditArticle(props) {
+class EditArticle extends Component {
+    constructor(props){
+    super(props);
+
+    const { article } = props;
+    this.state = {
+        title: article.title,
+        content: article.content,
+        article: []
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+}
+
+handleChange(event) {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+handleArticleSubmit(ev){
+    ev.preventDefault();
+    const data = {
+        title: this.state.title,
+        content: this.state.content
+    }
+    this.props.onSubmit(data);
+}
+
+render(){
     return (
         <div>
             <h1>Edit Article:</h1>
-            <form onSubmit={props.handleUpdateArticle} >
+            <form onSubmit={this.state.handleUpdateArticle} >
                 <input
                     type="text"
                     name="name"
-                    value={props.title}
+                    value={this.state.title}
                     placeholder="Article Title"
-                    onChange={props.handleChange} />
+                    onChange={this.state.handleChange} />
                 <input
                     type="text"
                     name="content"
-                    value={props.content}
+                    value={this.state.content}
                     placeholder="Content"
-                    onChange={props.handleChange} />
+                    onChange={this.state.handleChange} />
                 <input
                     type="submit"
                     value="submit Article"
@@ -24,7 +55,7 @@ function EditArticle(props) {
             </ form>
         </div>
     );
-
+}
 }
 
 export default EditArticle;
