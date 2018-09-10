@@ -39,7 +39,7 @@ class App extends Component {
   handleArticleClick(article) {
     fetchArticle(article)
       .then(resp => {
-        this.setState({ article: resp.article_id });
+        this.setState({ article: resp });
       });
   } 
 
