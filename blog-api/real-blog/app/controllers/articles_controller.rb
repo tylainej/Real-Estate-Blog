@@ -15,43 +15,44 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   # POST /articles.json
-  def create
-    @article = Article.new(article_params)
 
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+  skip_before_action :verify_authenticity_token
+  def create
+    @article = Article.create!(article_params)
+
+    render json: Article.all
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
+  # PUT /articles/1
+  # PUT /articles/1.json
   def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+    if @article.update(article_params)
+      render json: @article
+    else
+      render json: @article.errors, status: :unprocessable_entity
     end
+    
+    # respond_to do |format|
+    #   if @article.update(article_params)
+    #     format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @article }
+    #   else
+    #     format.json { render json: @article.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
  
-  def destroy
-    @article.destroy
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @article.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     def article_params
-      params.require(:article).permit(:title, :content, :subject, :users_id_id, :comments_id_id)
+      params.require(:article).permit(:title, :content, :subject, :comments_id)
     end
 end
