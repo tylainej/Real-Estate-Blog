@@ -53,6 +53,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :content, :subject, :comments_id)
+      params.require(:article).permit(:id, :title, :content, :subject, :comments_id)
     end
+    console.log('this is id' id,'this is article' article);
 end

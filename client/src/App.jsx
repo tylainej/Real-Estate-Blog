@@ -63,8 +63,6 @@ class App extends Component {
       title,
       content
     }
-    debugger;
-    console.log('hello')
     updateArticle(article)
       .then(resp =>
         fetchArticle(article.id))
@@ -73,8 +71,6 @@ class App extends Component {
           currentView: "article",
           article: [resp]
         })
-        debugger;
-        console.log('something')
       })
   }
 
