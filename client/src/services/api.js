@@ -36,16 +36,15 @@ export function saveArticle(article) {
 }
 
 
-export function updateArticle( id) {
-    console.log( 'this is id ', id);
+export function updateArticle(article) {
     const opts = {
         method: 'PUT',
-        body: JSON.stringify( [id] ),
+        body: JSON.stringify({ article }),
         headers: {
             'Content-Type': 'application/json'
         }
     }
-    return fetch(`${BASE_URL}/articles/${id}`, opts)
+    return fetch(`${BASE_URL}/articles/${article.id}`, opts)
         .then(resp => {
             return resp.json();
         }).catch(err => {
@@ -53,16 +52,16 @@ export function updateArticle( id) {
         });
 }
 
-// export function deleteArticle(id) {
-//     const opts = {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     }
+export function deleteArticle(id) {
+    const opts = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
 
-//     return fetch(`${BASE_URL}/articles/${id}/`, opts)
-//     .catch(error => {
-//         throw Error(error);
-//     });
-// }
+    return fetch(`${BASE_URL}/articles/${id}/`, opts)
+    .catch(error => {
+        throw Error(error);
+    });
+}

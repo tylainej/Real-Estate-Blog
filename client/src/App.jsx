@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchArticles, fetchArticle, saveArticle, updateArticle } from './services/api';
+import { fetchArticles, fetchArticle, saveArticle, updateArticle, deleteArticle } from './services/api';
 import Articles from './components/Articles';
 import ShowArticle from './components/ShowArticle';
 import CreateArticle from './components/CreateArticle';
@@ -15,6 +15,7 @@ class App extends Component {
       article: [],
       title: '',
       content: '',
+      id:'',
       editedArticle: ''
     }
     this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
@@ -37,7 +38,7 @@ class App extends Component {
   handleArticleClick(article) {
     fetchArticle(article)
       .then(resp => {
-        this.setState({ article: [resp] });
+        this.setState({ article: resp });
       });
   }
 
@@ -47,6 +48,7 @@ class App extends Component {
       editedArticle: article,
       name: article.name,
       title: article.title,
+      id: article.id,
       content: article.content,
       currentView: "edit article"
 
@@ -60,16 +62,20 @@ class App extends Component {
       content
     } = this.state;
     const article = {
-      title,
-      content
+      title: title,
+      content: content,
+      id: this.state.article.id
     }
     updateArticle(article)
       .then(resp =>
-        fetchArticle(article.id))
+        fetchArticle(article))
       .then(resp => {
         this.setState({
           currentView: "article",
-          article: [resp]
+          article: resp,
+          title: title,
+        content: content,
+        id: this.state.article.id
         })
       })
   }
@@ -110,6 +116,12 @@ class App extends Component {
       .catch(err => {
         throw (err);
       });
+  }
+  handleDeleteArticleClick(id){
+    deleteArticle(id)
+    .then(resp =>{
+    this.state.fetchArticles();
+ });
   }
 
   switchView(view) {

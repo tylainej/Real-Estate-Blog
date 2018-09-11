@@ -5,22 +5,17 @@ function ShowArticle(props) {
     return (
         <div className="show-article">
 
-            {props.article.map((art) => {
-                return (
-                    <div key={art.id} className="single-article">
-                        <h1> {art.subject}</h1>
-                        <h2>  {art.title} </h2>
-                        <p>  {art.content} </p>
+                    <div className="single-article">
+                        <h1> {props.article.subject}</h1>
+                        <h2>  {props.article.title} </h2>
+                        <p>  {props.article.content} </p>
 
                         <button className="edit-article-button"
-                            onClick={(evt) => { props.handleEditArticle(art) }} >
+                            onClick={(evt) => { props.handleEditArticle(props.article) }} >
                             Edit Article
                 </button>
                     </div>
 
-                );
-            })
-            }
         </div>
 
     );
@@ -28,4 +23,9 @@ function ShowArticle(props) {
 };
 
 export default ShowArticle;
+
+
+{/* <div>{props.article.subject</div>
+<div>{props.article.title}</div>
+<div */}
 

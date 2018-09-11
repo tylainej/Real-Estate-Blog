@@ -26,34 +26,19 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    if @article.update(article_params)
-      render json: @article
-    else
-      render json: @article.errors, status: :unprocessable_entity
-    end
-    
-    # respond_to do |format|
-    #   if @article.update(article_params)
-    #     format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @article }
-    #   else
-    #     format.json { render json: @article.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    article = Article.where( id: params[:id])
+    article.update(article_params)
+    render json: {article:article }
   end
 
  
-  # def destroy
-  #   @article.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    article = Article.where(id: params[:id])
+    article.destroy(params[:id])
+  end
 
   private
     def article_params
       params.require(:article).permit(:id, :title, :content, :subject, :comments_id)
     end
-    console.log('this is id' id,'this is article' article);
 end
