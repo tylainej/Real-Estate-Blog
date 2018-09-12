@@ -15,11 +15,13 @@ class App extends Component {
       article: [],
       title: '',
       content: '',
-      id:'',
+      id: '',
       editedArticle: ''
     }
+    this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleDeleteArticleClick = this.handleDeleteArticleClick.bind(this);
     this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
-    this.handleEditArticle = this.handleEditArticle.bind(this);
+    // this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
     this.handleArticleClick = this.handleArticleClick.bind(this);
@@ -42,18 +44,29 @@ class App extends Component {
       });
   }
 
-
-  handleEditArticle(article) {
-    this.setState({
+  handleEditClick(article){
+    fetchArticle(article)
+    .then(resp => {
+    this.setState(article)({
+      currentView: "edit article",
       editedArticle: article,
       name: article.name,
       title: article.title,
       id: article.id,
-      content: article.content,
-      currentView: "edit article"
-
-    });
+      content: article.content
+    });}
+  )
   }
+  // handleEditArticle(resp) {
+  //   console.log('this is edit', resp)
+  //   this.setState({
+  //     editedArticle: resp,
+  //     name: resp.name,
+  //     title: resp.title,
+  //     id: resp.id,
+  //     content: resp.content
+  //   });
+  // }
 
   handleUpdateArticle(e) {
     e.preventDefault();
@@ -73,9 +86,9 @@ class App extends Component {
         this.setState({
           currentView: "article",
           article: resp,
-          title: title,
-        content: content,
-        id: this.state.article.id
+          title,
+          content,
+          id: this.state.article.id
         })
       })
   }
@@ -117,11 +130,18 @@ class App extends Component {
         throw (err);
       });
   }
-  handleDeleteArticleClick(id){
+  handleDeleteArticleClick(id) {
     deleteArticle(id)
-    .then(resp =>{
-    this.state.fetchArticles();
- });
+      .then(resp => {
+        fetchArticles()
+          .then(resp => {
+            this.setState({
+              currentView: "articles",
+              editedArticle: '',
+              article: resp
+            })
+          })
+      })
   }
 
   switchView(view) {
@@ -137,6 +157,7 @@ class App extends Component {
         return <ShowArticle
           article={this.state.article}
           handleChange={this.handleChange}
+          handleEditClick = { this.handleEditClick }
           handleEditArticle={this.handleEditArticle}
         />
       case 'articles':
@@ -147,6 +168,7 @@ class App extends Component {
           switchView={this.switchView}
         />
       case 'edit article':
+        debugger
         return <EditArticle
           title={this.state.title}
           content={this.state.content}
@@ -154,6 +176,7 @@ class App extends Component {
           editedArticle={this.state.editedArticle}
           handleArticleSubmit={this.handleArticleSubmit}
           handleUpdateArticle={this.handleUpdateArticle}
+          handleDeleteArticleClick={this.handleDeleteArticleClick}
         />
       default:
         return null;
@@ -166,20 +189,21 @@ class App extends Component {
       <div className="main-page">
         <div className="App-header">
           <h1>
-            Real Estate Blog</h1>
+            Blurb</h1>
         </div>
-        <div className="create-nav">
-          <CreateArticle
-            name={this.state.name}
-            title={this.state.title}
-            content={this.state.content}
-            handleArticleSubmit={this.handleArticleSubmit}
-            handleChange={this.handleChange}
-          />
-        </div>
-        <div className="articles-wrapper">
+        <div className="page-wrapper">
+          <div className="create">
+            <CreateArticle
+              name={this.state.name}
+              title={this.state.title}
+              content={this.state.content}
+              handleArticleSubmit={this.handleArticleSubmit}
+              handleChange={this.handleChange}
+            /></div>
+          <div className="articles-wrapper">
 
-          {this.currentView()}
+            {this.currentView()}
+          </div>
         </div>
       </div>
     );

@@ -11,7 +11,7 @@
 .articles-wrapper{
   height: 90vh;
   border: solid 1px #1a1a1d;
-  margin: 8vw 15vw;
+  margin: 1vw 15vw;
   overflow: scroll;
   /* overflow: hidden; */
 }
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 .edit-submit-button{
-  margin: 20px auto 20px auto;
+  margin: 1vh 2vw;
   height: 5vh;
   width: 12vw;
   background-color: #1a1a1d;
@@ -67,6 +67,61 @@
   color: white;
   text-decoration: none;
 }
+.title{
+  height: 4vh;
+  width: 12vw;
+  font-size: 12pt;
+}
+.article-content{
+  height: 10vh;
+  width: 12vw;
+  font-size: 12pt;
+}
 .edit-article{
+  margin: 2vw 18vw;
 
+}
+.edit-content{
+  height: 18vh;
+  width: 17vw;
+  font-size: 14pt;
+}
+.edit-title{
+  width: 17vw;
+  font-size: 14pt;
+}
+.header{
+  text-align: center;
+  font-size: 18pt;
+  margin: 10vh;
+  width: 45vw;
+
+}
+.submit-article-button{
+  /* margin: 20px auto 20px auto; */
+  height: 5vh;
+  width: 6vw;
+  background-color: #1a1a1d;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 8pt;
+}
+.delete-article-button{
+  margin: 1vh  20vw;
+  height: 5vh;
+  width: 12vw;
+  background-color: #1a1a1d;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+.edit-article-wrapper{
+  margin: 2vw;
+}
+
+.page-wrapper{
+  display: flex;
 }

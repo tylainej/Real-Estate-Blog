@@ -14,21 +14,24 @@ function CreateArticle(props) {
                     value={props.subject}
                     placeholder="What's the Subject"
                     onChange={props.handleChange} /> */}
-                    <input
-                        className="title"
-                        type="text"
-                        name="title"
-                        value={props.title}
-                        placeholder="Title"
-                        onChange={props.handleChange} />
-                    <input
-                        className="article-content"
-                        type="text"
-                        name="content"
-                        value={props.content}
-                        placeholder="Your Article Goes Here"
-                        onChange={props.handleChange} />
-                    {/* <select
+                    <p>
+                        <input className="title"
+                            type="text"
+                            name="title"
+                            value={props.title}
+                            placeholder="Title"
+                            onChange={props.handleChange} />
+                            </p>
+
+                        <p>
+                            <input
+                                className="article-content"
+                                type="text"
+                                name="content"
+                                value={props.content}
+                                placeholder="Your Article Goes Here"
+                                onChange={props.handleChange} /></p>
+                        {/* <select
                     value={props.subject}
                     name="subject"
                     onChange={props.handleChange} >
@@ -42,17 +45,15 @@ function CreateArticle(props) {
                         )
                     })}
                 </select> */}
-                    <input
-                        className="submit-article"
-                        type="submit"
-                        value="Submit Article"
-                    />
-                </ form>
+                        <input
+                            className="submit-article-button"
+                            type="submit"
+                            value="Submit Article"
+                        />
+                </form>
             </div>
-        </div>
-    )
-
-
-}
-
+            </div>
+            )
+        }
+        
 export default CreateArticle;

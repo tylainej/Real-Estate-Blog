@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ShowArticle(props) {
-
+console.log('this show props', props)
     return (
         <div className="show-article">
 
@@ -11,9 +11,10 @@ function ShowArticle(props) {
                         <p>  {props.article.content} </p>
 
                         <button className="edit-article-button"
-                            onClick={(evt) => { props.handleEditArticle(props.article) }} >
+                            onClick={(evt) => { props.handleEditClick(props.article) }} >
                             Edit Article
                 </button>
+                
                     </div>
 
         </div>
@@ -25,7 +26,5 @@ function ShowArticle(props) {
 export default ShowArticle;
 
 
-{/* <div>{props.article.subject</div>
-<div>{props.article.title}</div>
-<div */}
+
 
