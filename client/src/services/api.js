@@ -19,7 +19,6 @@ export function fetchArticle(id) {
 }
 
 export function saveArticle(article) {
-    console.log('this is article:', article);
     const opts = {
         method: 'POST',
         body: JSON.stringify(article),
@@ -37,10 +36,10 @@ export function saveArticle(article) {
 }
 
 
-export function updateArticle( article, id) {
+export function updateArticle(article) {
     const opts = {
         method: 'PUT',
-        body: JSON.stringify( {article} ),
+        body: JSON.stringify({ article }),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -53,16 +52,17 @@ export function updateArticle( article, id) {
         });
 }
 
-// export function deleteArticle(id) {
-//     const opts = {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     }
+export function deleteArticle(id) {
+    console.log(id, 'this is delete')
 
-//     return fetch(`${BASE_URL}/articles/${id}/`, opts)
-//     .catch(error => {
-//         throw Error(error);
-//     });
-// }
+    const opts = {
+        method: 'DELETE',
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }
+    return fetch(`${BASE_URL}/articles/${id}/`, opts)
+    .catch(error => {
+        throw Error(error);
+    });
+}

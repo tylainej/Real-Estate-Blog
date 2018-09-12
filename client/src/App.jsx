@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchArticles, fetchArticle, saveArticle, updateArticle } from './services/api';
+import { fetchArticles, fetchArticle, saveArticle, updateArticle, deleteArticle } from './services/api';
 import Articles from './components/Articles';
 import ShowArticle from './components/ShowArticle';
 import CreateArticle from './components/CreateArticle';
@@ -15,8 +15,11 @@ class App extends Component {
       article: [],
       title: '',
       content: '',
+      id: '',
       editedArticle: ''
     }
+    this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleDeleteArticleClick = this.handleDeleteArticleClick.bind(this);
     this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
     this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -37,19 +40,35 @@ class App extends Component {
   handleArticleClick(article) {
     fetchArticle(article)
       .then(resp => {
-        this.setState({ article: [resp] });
+        this.setState({ article: resp });
       });
   }
 
-
-  handleEditArticle(article) {
+  handleEditClick(article){
+    fetchArticle(article.id)
+    .then(resp => {
+      console.log('I am edit click', resp)
     this.setState({
-      editedArticle: article,
-      name: article.name,
-      title: article.title,
-      content: article.content,
-      currentView: "edit article"
-
+      currentView: "edit article",
+      editedArticle: article.id,
+      ...resp
+      // editedArticle: article,
+      // name: article.name,
+      // title: article.title,
+      // id: article.id,
+      // content: article.content
+    });
+  }
+  )
+  }
+  handleEditArticle(resp) {
+    console.log('this is edit', resp)
+    this.setState({
+      editedArticle: resp,
+      name: resp.name,
+      title: resp.title,
+      id: resp.id,
+      content: resp.content
     });
   }
 
@@ -60,23 +79,23 @@ class App extends Component {
       content
     } = this.state;
     const article = {
-      title,
-      content
+      title: title,
+      content: content,
+      id: this.state.article.id
     }
     updateArticle(article)
       .then(resp =>
-        fetchArticle(article.id))
+        fetchArticle(article))
       .then(resp => {
         this.setState({
           currentView: "article",
-          article: [resp]
+          article: resp,
+          title,
+          content,
+          id: this.state.article.id
         })
       })
   }
-
-
-
-
 
   // this function allows state to change to what's being put in 
   handleChange(event) {
@@ -111,6 +130,19 @@ class App extends Component {
         throw (err);
       });
   }
+  handleDeleteArticleClick(id) {
+    deleteArticle(id)
+      .then(resp => {
+        fetchArticles()
+          .then(resp => {
+            this.setState({
+              currentView: "articles",
+              editedArticle: '',
+              article: resp
+            })
+          })
+      })
+  }
 
   switchView(view) {
     this.setState({
@@ -123,25 +155,27 @@ class App extends Component {
     switch (currentView) {
       case 'article':
         return <ShowArticle
-          article={this.state.article}
-          handleChange={this.handleChange}
-          handleEditArticle={this.handleEditArticle}
+          article = {this.state.article}
+          handleChange = {this.handleChange}
+          handleEditClick = { this.handleEditClick }
+          handleEditArticle = {this.handleEditArticle}
         />
       case 'articles':
         return <Articles
           // handleClick={this.handleClick}
-          articles={this.state.articles}
-          handleArticleClick={this.handleArticleClick}
-          switchView={this.switchView}
+          articles = {this.state.articles}
+          handleArticleClick = {this.handleArticleClick}
+          switchView = {this.switchView}
         />
       case 'edit article':
         return <EditArticle
-          title={this.state.title}
-          content={this.state.content}
-          handleChange={this.handleChange}
-          editedArticle={this.state.editedArticle}
-          handleArticleSubmit={this.handleArticleSubmit}
-          handleUpdateArticle={this.handleUpdateArticle}
+          title = {this.state.title}
+          content = {this.state.content}
+          handleChange = {this.handleChange}
+          editedArticle = {this.state.editedArticle}
+          handleArticleSubmit = {this.handleArticleSubmit}
+          handleUpdateArticle = {this.handleUpdateArticle}
+          handleDeleteArticleClick = {this.handleDeleteArticleClick}
         />
       default:
         return null;
@@ -154,20 +188,21 @@ class App extends Component {
       <div className="main-page">
         <div className="App-header">
           <h1>
-            Real Estate Blog</h1>
+            Blurb</h1>
         </div>
-        <div className="create-nav">
-          <CreateArticle
-            name={this.state.name}
-            title={this.state.title}
-            content={this.state.content}
-            handleArticleSubmit={this.handleArticleSubmit}
-            handleChange={this.handleChange}
-          />
-        </div>
-        <div className="articles-wrapper">
+        <div className="page-wrapper">
+          <div className="create">
+            <CreateArticle
+              name={this.state.name}
+              title={this.state.title}
+              content={this.state.content}
+              handleArticleSubmit={this.handleArticleSubmit}
+              handleChange={this.handleChange}
+            /></div>
+          <div className="articles-wrapper">
 
-          {this.currentView()}
+            {this.currentView()}
+          </div>
         </div>
       </div>
     );
