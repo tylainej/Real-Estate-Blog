@@ -52,8 +52,8 @@ export function updateArticle(article) {
         });
 }
 
-export function deleteArticle(article) {
-    console.log(article.id, 'this is delete')
+export function deleteArticle(id) {
+    console.log(id, 'this is delete')
 
     const opts = {
         method: 'DELETE',
@@ -61,7 +61,7 @@ export function deleteArticle(article) {
             'Content-Type': 'application/json'
         }
     }
-    return fetch(`${BASE_URL}/articles/${article.id}/`, opts)
+    return fetch(`${BASE_URL}/articles/${id}/`, opts)
     .catch(error => {
         throw Error(error);
     });

@@ -50,6 +50,7 @@ class App extends Component {
       console.log('I am edit click', resp)
     this.setState({
       currentView: "edit article",
+      editedArticle: article.id,
       ...resp
       // editedArticle: article,
       // name: article.name,
