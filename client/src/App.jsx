@@ -97,10 +97,6 @@ class App extends Component {
       })
   }
 
-
-
-
-
   // this function allows state to change to what's being put in 
   handleChange(event) {
     const { name, value } = event.target;
@@ -159,27 +155,27 @@ class App extends Component {
     switch (currentView) {
       case 'article':
         return <ShowArticle
-          article={this.state.article}
-          handleChange={this.handleChange}
+          article = {this.state.article}
+          handleChange = {this.handleChange}
           handleEditClick = { this.handleEditClick }
-          handleEditArticle={this.handleEditArticle}
+          handleEditArticle = {this.handleEditArticle}
         />
       case 'articles':
         return <Articles
           // handleClick={this.handleClick}
-          articles={this.state.articles}
-          handleArticleClick={this.handleArticleClick}
-          switchView={this.switchView}
+          articles = {this.state.articles}
+          handleArticleClick = {this.handleArticleClick}
+          switchView = {this.switchView}
         />
       case 'edit article':
         return <EditArticle
-          title={this.state.title}
-          content={this.state.content}
-          handleChange={this.handleChange}
-          editedArticle={this.state.editedArticle}
-          handleArticleSubmit={this.handleArticleSubmit}
-          handleUpdateArticle={this.handleUpdateArticle}
-          handleDeleteArticleClick={this.handleDeleteArticleClick}
+          title = {this.state.title}
+          content = {this.state.content}
+          handleChange = {this.handleChange}
+          editedArticle = {this.state.editedArticle}
+          handleArticleSubmit = {this.handleArticleSubmit}
+          handleUpdateArticle = {this.handleUpdateArticle}
+          handleDeleteArticleClick = {this.handleDeleteArticleClick}
         />
       default:
         return null;

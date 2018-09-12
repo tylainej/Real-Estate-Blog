@@ -13333,3 +13333,214 @@ Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
 ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=[object Object]):
   
 app/controllers/articles_controller.rb:13:in `show'
+Started GET "/articles" for 127.0.0.1 at 2018-09-12 12:23:03 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (5.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 11ms (Views: 5.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/articles/5" for 127.0.0.1 at 2018-09-12 12:23:06 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/5" for 127.0.0.1 at 2018-09-12 12:23:11 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/articles/5" for 127.0.0.1 at 2018-09-12 12:23:20 -0400
+Processing by ArticlesController#update as */*
+  Parameters: {"article"=>{"title"=>"New York Rocks", "content"=>"I love living in it", "id"=>5}, "id"=>"5"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:30
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:31
+  [1m[36mArticle Update (2.6ms)[0m  [1m[33mUPDATE "articles" SET "content" = $1, "updated_at" = $2 WHERE "articles"."id" = $3[0m  [["content", "I love living in it"], ["updated_at", "2018-09-12 16:23:20.659027"], ["id", 5]]
+  ↳ app/controllers/articles_controller.rb:31
+  [1m[35m (8.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:31
+Completed 200 OK in 19ms (Views: 0.8ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/articles/[object%20Object]" for 127.0.0.1 at 2018-09-12 12:23:20 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"[object Object]"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=[object Object]):
+  
+app/controllers/articles_controller.rb:13:in `show'
+Started GET "/articles" for 127.0.0.1 at 2018-09-12 12:27:17 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles/7" for 127.0.0.1 at 2018-09-12 14:44:20 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/7" for 127.0.0.1 at 2018-09-12 14:44:23 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/articles/7" for 127.0.0.1 at 2018-09-12 14:44:25 -0400
+Processing by ArticlesController#update as */*
+  Parameters: {"article"=>{"title"=>"LA is HOT", "content"=>" a lot of dry heat and I have never", "id"=>7}, "id"=>"7"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:30
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:31
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/articles/[object%20Object]" for 127.0.0.1 at 2018-09-12 14:44:25 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"[object Object]"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 404 Not Found in 1ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=[object Object]):
+  
+app/controllers/articles_controller.rb:13:in `show'
+Started GET "/articles" for 127.0.0.1 at 2018-09-12 14:53:14 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/articles/7" for 127.0.0.1 at 2018-09-12 15:08:13 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (3.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/articles/7" for 127.0.0.1 at 2018-09-12 15:08:16 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/articles/7/" for 127.0.0.1 at 2018-09-12 15:08:27 -0400
+Processing by ArticlesController#destroy as */*
+  Parameters: {"id"=>"7", "article"=>{}}
+  [1m[36mArticle Load (2.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:38
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  ↳ app/controllers/articles_controller.rb:38
+  [1m[36mArticle Destroy (0.9ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/articles_controller.rb:38
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:38
+No template found for ArticlesController#destroy, rendering head :no_content
+Completed 204 No Content in 246ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2018-09-12 15:08:27 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/7" for 127.0.0.1 at 2018-09-12 15:12:20 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 404 Not Found in 3ms (ActiveRecord: 1.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=7):
+  
+app/controllers/articles_controller.rb:13:in `show'
+Started GET "/articles" for 127.0.0.1 at 2018-09-12 15:13:24 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/13" for 127.0.0.1 at 2018-09-12 15:25:04 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/articles/13" for 127.0.0.1 at 2018-09-12 15:25:09 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/articles/13" for 127.0.0.1 at 2018-09-12 15:25:55 -0400
+Processing by ArticlesController#update as */*
+  Parameters: {"article"=>{"title"=>"THis is from the create", "content"=>"I am creatining", "id"=>13}, "id"=>"13"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:30
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:31
+  [1m[36mArticle Update (2.3ms)[0m  [1m[33mUPDATE "articles" SET "title" = $1, "content" = $2, "updated_at" = $3 WHERE "articles"."id" = $4[0m  [["title", "THis is from the create"], ["content", "I am creatining"], ["updated_at", "2018-09-12 19:25:55.943734"], ["id", 13]]
+  ↳ app/controllers/articles_controller.rb:31
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:31
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/articles/[object%20Object]" for 127.0.0.1 at 2018-09-12 15:25:55 -0400
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"[object Object]"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:13
+Completed 404 Not Found in 2ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=[object Object]):
+  
+app/controllers/articles_controller.rb:13:in `show'
+Started GET "/articles" for 127.0.0.1 at 2018-09-12 15:25:58 -0400
+Processing by ArticlesController#index as */*
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/articles_controller.rb:8
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.6ms)
+
+
