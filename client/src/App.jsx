@@ -21,7 +21,7 @@ class App extends Component {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleDeleteArticleClick = this.handleDeleteArticleClick.bind(this);
     this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
-    // this.handleEditArticle = this.handleEditArticle.bind(this);
+    this.handleEditArticle = this.handleEditArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleArticleSubmit = this.handleArticleSubmit.bind(this);
     this.handleArticleClick = this.handleArticleClick.bind(this);
@@ -45,28 +45,31 @@ class App extends Component {
   }
 
   handleEditClick(article){
-    fetchArticle(article)
+    fetchArticle(article.id)
     .then(resp => {
-    this.setState(article)({
+      console.log('I am edit click', resp)
+    this.setState({
       currentView: "edit article",
-      editedArticle: article,
-      name: article.name,
-      title: article.title,
-      id: article.id,
-      content: article.content
-    });}
+      ...resp
+      // editedArticle: article,
+      // name: article.name,
+      // title: article.title,
+      // id: article.id,
+      // content: article.content
+    });
+  }
   )
   }
-  // handleEditArticle(resp) {
-  //   console.log('this is edit', resp)
-  //   this.setState({
-  //     editedArticle: resp,
-  //     name: resp.name,
-  //     title: resp.title,
-  //     id: resp.id,
-  //     content: resp.content
-  //   });
-  // }
+  handleEditArticle(resp) {
+    console.log('this is edit', resp)
+    this.setState({
+      editedArticle: resp,
+      name: resp.name,
+      title: resp.title,
+      id: resp.id,
+      content: resp.content
+    });
+  }
 
   handleUpdateArticle(e) {
     e.preventDefault();
@@ -168,7 +171,6 @@ class App extends Component {
           switchView={this.switchView}
         />
       case 'edit article':
-        debugger
         return <EditArticle
           title={this.state.title}
           content={this.state.content}

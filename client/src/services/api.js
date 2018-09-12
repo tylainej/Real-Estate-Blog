@@ -52,16 +52,16 @@ export function updateArticle(article) {
         });
 }
 
-export function deleteArticle(id) {
+export function deleteArticle(article) {
+    console.log(article.id, 'this is delete')
+
     const opts = {
         method: 'DELETE',
         headers:{
             'Content-Type': 'application/json'
         }
-    };
-
-    
-    return fetch(`${BASE_URL}/articles/${id}/`, opts)
+    }
+    return fetch(`${BASE_URL}/articles/${article.id}/`, opts)
     .catch(error => {
         throw Error(error);
     });
