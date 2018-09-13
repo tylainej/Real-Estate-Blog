@@ -11,28 +11,25 @@ AS A USER I WANT TO BE ABLE TO WRITE ARTICLES ABOUT REAL ESTATE
 AS A USER I WANT TO BE ABLE TO MAKE COMMENTS ON THE ARTICLES
 
 
-![blog erd](https://user-images.githubusercontent.com/40297750/45052137-f260bb80-b053-11e8-86ca-ff902a7a3173.png)
-
-
-# TIMELINE
-
-I expect to have crud done and completed by thursday 9/6/2018
-
-I want the user auth completed by Friday 9/7/2018
-
-The bulk of CSS will be done over the weedend and completed by Monday 9/10/2018
-
+![blog erd 1](https://user-images.githubusercontent.com/40297750/45506606-bfa67980-b75d-11e8-9328-da3a3be789bf.png)
 
 
 # WIREFRAME
 
 landing page
-![landing page](https://user-images.githubusercontent.com/40297750/45048386-c17b8900-b049-11e8-89bd-343b5b9bd23e.png)
-
+![landing page 1](https://user-images.githubusercontent.com/40297750/45506626-d0ef8600-b75d-11e8-970b-d0dba8a4ac8e.png)
 
 article page
-![article age](https://user-images.githubusercontent.com/40297750/45048418-de17c100-b049-11e8-9cc9-0c001d7b68ac.png)
+![article age 1](https://user-images.githubusercontent.com/40297750/45506619-cb923b80-b75d-11e8-9551-99f4ccbcb790.png)
 
+create article page
+![create article 2](https://user-images.githubusercontent.com/40297750/45506616-c503c400-b75d-11e8-8d74-3cec8aa7b64d.png)
+
+![edit article page](https://user-images.githubusercontent.com/40297750/45506640-e06ecf00-b75d-11e8-980d-b92e8d953f59.png)
+
+# TECH/FRAMEWORK USED
+
+Ruby Rails and React
 
 
 Author Tylaine Jeffrey
