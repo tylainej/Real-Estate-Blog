@@ -1,4 +1,4 @@
-const BASE_URL = "https://still-oasis-37324.herokuapp.com/"
+const BASE_URL = "https://still-oasis-37324.herokuapp.com"
 
 export function fetchArticles(articles) {
     return fetch(`${BASE_URL}/articles`)

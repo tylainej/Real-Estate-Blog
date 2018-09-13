@@ -94,7 +94,7 @@ class App extends Component {
     }
     updateArticle(article)
       .then(resp =>
-        fetchArticle(article))
+        fetchArticle(article.id))
       .then(resp => {
         this.setState({
           currentView: "article",
