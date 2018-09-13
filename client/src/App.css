@@ -1,5 +1,5 @@
-.App {
-  /* text-align: center; */
+* {
+font-family: cursive;
 }
 
 .Articles {
@@ -14,12 +14,28 @@
   padding: 2vw 3vw;
 
 }
+.create-article-button{
+  color: #f2b632;
+  margin-right: 5vw;
+}
+.main-page-click{
+  color: #f2b632;
+  margin-right: 5vw;
+}
+.nav-bar{
+  height: 8vh;
+  background-color: #252839;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2vh;
+}
 .articles-wrapper{
   height: 90vh;
   border-left: solid 5px #252839;
   border-right: solid 5px #252839;
   overflow: scroll;
   width: 70vw;
+  margin-left: 16vw;
 }
 .show-article{
   height: 60vh;
@@ -30,7 +46,7 @@
 }
 
 .App-header {
-  background-color: #252839;
+  background-color: #677077;
   height: 100px;
   padding-top: 10px;
   color: #f2b632;
@@ -147,7 +163,7 @@
   
 }
 .page-wrapper{
-  display: flex;
+  /* display: flex; */
   background-color: #b5b5b7;
 }
 .footer{

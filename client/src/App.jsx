@@ -26,6 +26,8 @@ class App extends Component {
       id: '',
       editedArticle: ''
     }
+    this.handleMainPageClick = this.handleMainPageClick.bind(this);
+    this.handleCreateArticleClick = this.handleCreateArticleClick.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleDeleteArticleClick = this.handleDeleteArticleClick.bind(this);
     this.handleUpdateArticle = this.handleUpdateArticle.bind(this);
@@ -62,6 +64,11 @@ class App extends Component {
         });
       }
       )
+  }
+  handleCreateArticleClick(e){
+    this.setState({
+      currentView: "create article"
+    })
   }
   handleEditArticle(resp) {
     this.setState({
@@ -145,6 +152,11 @@ class App extends Component {
       })
   }
 
+handleMainPageClick(){
+  this.setState({
+    currentView: "articles"
+  })
+}
   switchView(view) {
     this.setState({
       currentView: view
@@ -160,6 +172,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleEditClick={this.handleEditClick}
           handleEditArticle={this.handleEditArticle}
+          handleMainPageClick = { this.handleMainPageClick }
         />
       case 'articles':
         return <Articles
@@ -176,7 +189,18 @@ class App extends Component {
           handleArticleSubmit={this.handleArticleSubmit}
           handleUpdateArticle={this.handleUpdateArticle}
           handleDeleteArticleClick={this.handleDeleteArticleClick}
+          handleMainPageClick = { this.handleMainPageClick }
         />
+      case 'create article':
+      return <CreateArticle
+      name = {this.state.name}
+      title = {this.state.title}
+      content = {this.state.content}
+      handleArticleSubmit = {this.handleArticleSubmit}
+      handleChange = {this.handleChange}
+      handleCreateArticleClick = { this.handleCreateArticleClick }
+      handleMainPageClick = { this.handleMainPageClick }
+    />
       default:
         return null;
     }
@@ -187,18 +211,28 @@ class App extends Component {
     return (
       <div className="main-page">
         <div className="App-header">
-          <h1 className="app-title">
+          <h1 className="app-title"
+          onClick ={() => {
+            this.handleMainPageClick();
+          }}
+          >
             Blurb</h1>
         </div>
         <div className="page-wrapper">
-          <div className="create">
-            <CreateArticle
-              name={this.state.name}
-              title={this.state.title}
-              content={this.state.content}
-              handleArticleSubmit={this.handleArticleSubmit}
-              handleChange={this.handleChange}
-            /></div>
+          <nav className="nav-bar">
+          <span className= "main-page-click"
+          onClick = {() =>{
+            this.handleMainPageClick();
+          }}
+          ><h1>Main Page</h1></span>
+          <span className="create-article-button" 
+          onClick = {() => {
+          this.handleCreateArticleClick();
+          }}
+          >
+                <h1>Write Your Own Article</h1>
+            </span>
+            </nav>
           <div className="articles-wrapper">
 
             {this.currentView()}
