@@ -76,7 +76,8 @@ class App extends Component {
       name: resp.name,
       title: resp.title,
       id: resp.id,
-      content: resp.content
+      content: resp.content,
+
     });
   }
 
@@ -95,7 +96,6 @@ class App extends Component {
       .then(resp =>
         fetchArticle(article))
       .then(resp => {
-        console.log(article,'this is resp')
         this.setState({
           currentView: "article",
           article: article,
