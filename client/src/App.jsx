@@ -95,9 +95,10 @@ class App extends Component {
       .then(resp =>
         fetchArticle(article))
       .then(resp => {
+        console.log(article,'this is resp')
         this.setState({
           currentView: "article",
-          article: resp,
+          article: article,
           title,
           content,
           id: this.state.article.id
@@ -138,6 +139,7 @@ class App extends Component {
         throw (err);
       });
   }
+
   handleDeleteArticleClick(id) {
     deleteArticle(id)
       .then(resp => {

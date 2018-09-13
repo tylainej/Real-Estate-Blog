@@ -177,6 +177,6 @@ font-family: cursive;
   height: 4vh;
   font-size: 16pt;
   padding: 1em;
-  letter-spacing: 7px;
+  letter-spacing: .7em;
   color: #f2b632;
 }

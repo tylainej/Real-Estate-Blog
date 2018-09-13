@@ -53,8 +53,6 @@ export function updateArticle(article) {
 }
 
 export function deleteArticle(id) {
-    console.log(id, 'this is delete')
-
     const opts = {
         method: 'DELETE',
         headers: {
