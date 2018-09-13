@@ -12,21 +12,22 @@ font-family: cursive;
 }
 .single-article{
   padding: 2vw 3vw;
-
+  justify-content: space-between;
 }
 .create-article-button{
   color: #f2b632;
   margin-right: 5vw;
+  margin-left: 5vw;
 }
 .main-page-click{
   color: #f2b632;
-  margin-right: 5vw;
+  margin-left: 10vw;
 }
 .nav-bar{
   height: 8vh;
   background-color: #252839;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-bottom: 2vh;
 }
 .articles-wrapper{
@@ -92,16 +93,20 @@ font-family: cursive;
   text-decoration: none;
   letter-spacing: 3px;
 }
+.create-article-wrapper{
+  margin: 5vh 25vw;
+}
 .title{
-  height: 4vh;
-  width: 17vw;
-  font-size: 12pt;
+  width: 19vw;
+  font-size: 14pt;
+  box-shadow: #252839 5px 8px;
+  margin-bottom: 5vh;
 }
 .article-content{
-  height: 10vh;
-  width: 17vw;
-  font-size: 12pt;
-  padding-left: 10px;
+  height: 20vh;
+  width: 19vw;
+  font-size: 14pt;
+  box-shadow: #252839 5px 8px;
 }
 .title-showarticle{
   text-align: center;
@@ -144,7 +149,7 @@ font-family: cursive;
   text-decoration: none;
   font-size: 8pt;
   letter-spacing: 5px;
-
+  margin: 3vh 2vw;
 }
 .delete-article-button{
   margin: 0vh  26vw;

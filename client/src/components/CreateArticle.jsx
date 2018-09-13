@@ -3,7 +3,7 @@ import React from 'react';
 function CreateArticle(props) {
     return (
         <div className="create-article-wrapper">
-            
+
             <div>
                 <h2>Give The World Your Thoughts</h2>
                 <form onSubmit={props.handleArticleSubmit} >
