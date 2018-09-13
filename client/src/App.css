@@ -1,5 +1,5 @@
-.App {
-  /* text-align: center; */
+* {
+font-family: cursive;
 }
 
 .Articles {
@@ -12,7 +12,23 @@
 }
 .single-article{
   padding: 2vw 3vw;
-
+  justify-content: space-between;
+}
+.create-article-button{
+  color: #f2b632;
+  margin-right: 5vw;
+  margin-left: 5vw;
+}
+.main-page-click{
+  color: #f2b632;
+  margin-left: 10vw;
+}
+.nav-bar{
+  height: 8vh;
+  background-color: #252839;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2vh;
 }
 .articles-wrapper{
   height: 90vh;
@@ -20,6 +36,7 @@
   border-right: solid 5px #252839;
   overflow: scroll;
   width: 70vw;
+  margin-left: 16vw;
 }
 .show-article{
   height: 60vh;
@@ -30,7 +47,7 @@
 }
 
 .App-header {
-  background-color: #252839;
+  background-color: #677077;
   height: 100px;
   padding-top: 10px;
   color: #f2b632;
@@ -76,16 +93,20 @@
   text-decoration: none;
   letter-spacing: 3px;
 }
+.create-article-wrapper{
+  margin: 5vh 25vw;
+}
 .title{
-  height: 4vh;
-  width: 17vw;
-  font-size: 12pt;
+  width: 19vw;
+  font-size: 14pt;
+  box-shadow: #252839 5px 8px;
+  margin-bottom: 5vh;
 }
 .article-content{
-  height: 10vh;
-  width: 17vw;
-  font-size: 12pt;
-  padding-left: 10px;
+  height: 20vh;
+  width: 19vw;
+  font-size: 14pt;
+  box-shadow: #252839 5px 8px;
 }
 .title-showarticle{
   text-align: center;
@@ -128,7 +149,7 @@
   text-decoration: none;
   font-size: 8pt;
   letter-spacing: 5px;
-
+  margin: 3vh 2vw;
 }
 .delete-article-button{
   margin: 0vh  26vw;
@@ -147,7 +168,7 @@
   
 }
 .page-wrapper{
-  display: flex;
+  /* display: flex; */
   background-color: #b5b5b7;
 }
 .footer{

@@ -3,10 +3,9 @@ import React from 'react';
 function CreateArticle(props) {
     return (
         <div className="create-article-wrapper">
-            <button className="create-article" >
-                <h1>Write Your Own Article</h1>
-            </button>
+
             <div>
+                <h2>Give The World Your Thoughts</h2>
                 <form onSubmit={props.handleArticleSubmit} >
                     {/* <input
                     type="text"
@@ -24,7 +23,7 @@ function CreateArticle(props) {
                     </p>
 
                     <p>
-                        <input
+                        <textarea
                             className="article-content"
                             type="text"
                             name="content"

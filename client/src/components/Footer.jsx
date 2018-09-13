@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Footer(){
-    return(
+function Footer() {
+    return (
         <footer className="footer">
 
-created by Tylaine Jeffrey
+            created by Tylaine Jeffrey
         </footer>
     )
 }

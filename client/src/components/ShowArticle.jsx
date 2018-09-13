@@ -5,7 +5,6 @@ function ShowArticle(props) {
         <div className="show-article">
 
             <div className="single-article">
-                {/* <h1 className="subject-showarticle"> {props.article.subject}</h1> */}
                 <h2 className="title-showarticle">  {props.article.title} </h2>
                 <p className="content-showarticle">  {props.article.content} </p>
 
