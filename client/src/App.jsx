@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchArticles, fetchArticle, saveArticle, updateArticle, deleteArticle } from './services/api';
+import Footer from './components/Footer';
 import Articles from './components/Articles';
 import ShowArticle from './components/ShowArticle';
 import CreateArticle from './components/CreateArticle';
 import EditArticle from './components/EditArticle';
+import {
+  fetchArticles,
+  fetchArticle,
+  saveArticle,
+  updateArticle,
+  deleteArticle
+} from './services/api';
+
 
 class App extends Component {
   constructor(props) {
@@ -44,25 +52,18 @@ class App extends Component {
       });
   }
 
-  handleEditClick(article){
+  handleEditClick(article) {
     fetchArticle(article.id)
-    .then(resp => {
-      console.log('I am edit click', resp)
-    this.setState({
-      currentView: "edit article",
-      editedArticle: article.id,
-      ...resp
-      // editedArticle: article,
-      // name: article.name,
-      // title: article.title,
-      // id: article.id,
-      // content: article.content
-    });
-  }
-  )
+      .then(resp => {
+        this.setState({
+          currentView: "edit article",
+          editedArticle: article.id,
+          ...resp
+        });
+      }
+      )
   }
   handleEditArticle(resp) {
-    console.log('this is edit', resp)
     this.setState({
       editedArticle: resp,
       name: resp.name,
@@ -155,27 +156,26 @@ class App extends Component {
     switch (currentView) {
       case 'article':
         return <ShowArticle
-          article = {this.state.article}
-          handleChange = {this.handleChange}
-          handleEditClick = { this.handleEditClick }
-          handleEditArticle = {this.handleEditArticle}
+          article={this.state.article}
+          handleChange={this.handleChange}
+          handleEditClick={this.handleEditClick}
+          handleEditArticle={this.handleEditArticle}
         />
       case 'articles':
         return <Articles
-          // handleClick={this.handleClick}
-          articles = {this.state.articles}
-          handleArticleClick = {this.handleArticleClick}
-          switchView = {this.switchView}
+          articles={this.state.articles}
+          handleArticleClick={this.handleArticleClick}
+          switchView={this.switchView}
         />
       case 'edit article':
         return <EditArticle
-          title = {this.state.title}
-          content = {this.state.content}
-          handleChange = {this.handleChange}
-          editedArticle = {this.state.editedArticle}
-          handleArticleSubmit = {this.handleArticleSubmit}
-          handleUpdateArticle = {this.handleUpdateArticle}
-          handleDeleteArticleClick = {this.handleDeleteArticleClick}
+          title={this.state.title}
+          content={this.state.content}
+          handleChange={this.handleChange}
+          editedArticle={this.state.editedArticle}
+          handleArticleSubmit={this.handleArticleSubmit}
+          handleUpdateArticle={this.handleUpdateArticle}
+          handleDeleteArticleClick={this.handleDeleteArticleClick}
         />
       default:
         return null;
@@ -187,7 +187,7 @@ class App extends Component {
     return (
       <div className="main-page">
         <div className="App-header">
-          <h1>
+          <h1 className="app-title">
             Blurb</h1>
         </div>
         <div className="page-wrapper">
@@ -204,6 +204,7 @@ class App extends Component {
             {this.currentView()}
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }

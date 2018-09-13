@@ -2,10 +2,9 @@ import React from 'react';
 
 function EditArticle(props) {
 
-console.log(props)
     return (
         <div className="edit-article-wrapper">
-            <h1 className="header" >Edit Article:</h1>
+            <h1 className="header" >Edit Article: {props.title || ''}</h1>
             <form onSubmit={props.handleUpdateArticle} className="edit-article">
                 <p>   <input
                     className="edit-title"

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # resources :areas
 
-  # resources :users do 
+  # resources :users do
   #   resources :articles
   # end
 
