@@ -1,14 +1,18 @@
 * {
 font-family: cursive;
 }
-
+.main-page{
+  background-image: url(./images/matteo-catanese-572620-unsplash.jpg);
+  background-size: cover;
+}
 .Articles {
   height: 30vh;
   border-top: solid 3px #252839;
   border-bottom: solid 3px #252839;
-
   margin: 5vw;
   padding: 1vw;
+  background-color: rgba(103,112,119, 0.8);
+
 }
 .single-article{
   padding: 2vw 3vw;
@@ -37,13 +41,15 @@ font-family: cursive;
   overflow: scroll;
   width: 70vw;
   margin-left: 16vw;
+  background-color: rgba(103,112,119, 0.5);
 }
 .show-article{
   height: 60vh;
   border-top: solid 4px #252839;
   border-bottom: solid 4px #252839;
   margin: 8vw 5vw;
-  padding: 1vh 3vw;;
+  padding: 1vh 3vw;
+  background-color: rgba(103,112,119, 0.8);
 }
 
 .App-header {
@@ -52,6 +58,7 @@ font-family: cursive;
   padding-top: 10px;
   color: #f2b632;
   text-align: center;
+  opacity: .5;
 }
 
 .app-title {
@@ -60,7 +67,7 @@ font-family: cursive;
 }
 
 .read-more{
-  margin: 3vh 35vw;
+  margin: 2vh 36vw;
   position: relative;
   height: 5vh;
   width: 8vw;
@@ -70,6 +77,7 @@ font-family: cursive;
   color: #f2b632;
   text-decoration: none;
   letter-spacing: 3px;
+  position: relative;
 }
 .edit-article-button{
   margin: 15vh 20vw;
@@ -81,6 +89,7 @@ font-family: cursive;
   color: #f2b632;
   text-decoration: none;
   letter-spacing: 3px;
+  outline: none;
 }
 .edit-submit-button{
   margin: 3vh 4vw;
@@ -92,6 +101,7 @@ font-family: cursive;
   color: #f2b632;
   text-decoration: none;
   letter-spacing: 3px;
+  outline: none;
 }
 .create-article-wrapper{
   margin: 5vh 25vw;
@@ -150,6 +160,7 @@ font-family: cursive;
   font-size: 8pt;
   letter-spacing: 5px;
   margin: 3vh 2vw;
+  outline: none;
 }
 .delete-article-button{
   margin: 0vh  26vw;
@@ -161,15 +172,15 @@ font-family: cursive;
   color: #f2b632;
   text-decoration: none;
   letter-spacing: 3px;
-
+  outline: none;
 }
 .edit-article-wrapper{
   margin: 2vw;
   
 }
 .page-wrapper{
-  /* display: flex; */
-  background-color: #b5b5b7;
+  /* background-image: url(./images/matteo-catanese-572620-unsplash.jpg); */
+  background-size: 100%;
 }
 .footer{
   text-align: center;

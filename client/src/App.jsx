@@ -67,7 +67,11 @@ class App extends Component {
   }
   handleCreateArticleClick(e) {
     this.setState({
-      currentView: "create article"
+      currentView: "create article",
+      editedArticle: '',
+      name: '',
+      title: '',
+      content: '',
     })
   }
   handleEditArticle(resp) {
@@ -77,7 +81,6 @@ class App extends Component {
       title: resp.title,
       id: resp.id,
       content: resp.content,
-
     });
   }
 
@@ -218,7 +221,7 @@ class App extends Component {
               this.handleMainPageClick();
             }}
           >
-            Blurb</h1>
+            Real Estate Blurb</h1>
         </div>
         <div className="page-wrapper">
           <nav className="nav-bar">
